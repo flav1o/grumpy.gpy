@@ -1,0 +1,9 @@
+var_assignment -> identifier "->" string
+
+identifier -> [A-zA-Z]:+
+
+string -> [A-zA-Z]:+
+
+number -> digits "." digits
+
+digits -> [0-9]:+
