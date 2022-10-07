@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nearley": "^2.20.1"
+    "mz": "^2.7.0",
+    "nearley": "^2.20.1",
+    "path": "^0.12.7"
   }
 }
