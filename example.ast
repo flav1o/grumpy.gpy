@@ -1,1 +1,1 @@
-[{"type":"var_assignment","varname":["a"],"value":1}]
+[{"type":"print_statement","expression":{"type":"binary_expression","left":["a"],"operator":"+","right":1}}]
