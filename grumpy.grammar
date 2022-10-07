@@ -1,9 +1,19 @@
-var_assignment -> identifier "->" string
+program 
+    -> var_assignment  {% id %}
+    | number           {% id %}
 
-identifier -> [A-zA-Z]:+
+var_assignment -> identifier "->" number
 
-string -> [A-zA-Z]:+
+identifier -> [A-zA-Z]:+ {% id %}
 
-number -> digits "." digits
+number 
+    -> digits {% 
+        data => Number(data[0])
+    %} 
+    | digits "." digits {%
+        data => Number(data.join(""))
+    %}
 
-digits -> [0-9]:+
+digits -> [0-9]:+ {%
+    data => data[0].join("")
+%}

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "grumpy": "npx nearleyc grumpy.grammar -o grumpy.js; tsc parse.ts; node parse.js"
   },
   "keywords": [],
   "author": "",
