@@ -1,1 +1,5 @@
-log a + 1
+b -> 1
+while b > 2 {
+    log b
+    b -> b + 1
+}

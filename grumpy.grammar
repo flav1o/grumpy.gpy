@@ -1,14 +1,33 @@
-program 
-    -> var_assignment  {% id %}
-    | number           {% id %}
-    | expression       {% id %}
-    | print_statement {% id %}
+program -> statements {% id %}
+
+statements
+    -> _ statement _  {% 
+        data => [data[1]]
+     %}
+    | _ statement _ "\n" statements {%
+        data => [data[1], ...data[4]]
+    %}
+
+statement 
+    -> var_assignment   {% id %}
+    | print_statement   {% id %}
+    | while_loop        {% id %}
 
 print_statement -> "log" __ expression {%
     data => {
         return {
             type: "print_statement",
-            expression: data[2]
+            expression: data[2],
+        }
+    }
+%}
+
+while_loop -> "while" __ binary_expression _ "{" _ "\n" statements "\n" "}" {% 
+    data => {
+        return {
+            type: "while_loop",
+            condition: data[2],
+            body: data[7]
         }
     }
 %}
@@ -35,10 +54,15 @@ binary_expression
     %}
 
 operator
-    -> "+" {% id %}
-    | "-"  {% id %}
-    | "/"  {% id %}
-    | "*"  {% id %}
+    -> "+"  {% id %}
+    | "-"   {% id %}
+    | "/"   {% id %}
+    | "*"   {% id %}
+    | ">"   {% id %}
+    | "<"   {% id %}
+    | "<="  {% id %}
+    | ">="  {% id %}
+    | "="   {% id %}
  
 
 var_assignment -> identifier _ "->" _ expression {%
