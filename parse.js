@@ -13,8 +13,6 @@ async function main() {
 		parser.feed(code);
 		const ast = parser.results;
 		await fs.writeFile(outputFile, JSON.stringify(ast));
-
-		console.log(JSON.stringify(parser.results, null, 4));
 	} catch (e) {
 		console.log("error => ", JSON.stringify(e.message, null, 4));
 	}

@@ -1,5 +1,6 @@
-b -> 1
-while b > 2 {
-    log b
-    b -> b + 1
+c -> 0
+log c
+while c < 10 {
+    c -> c + 1
+    log c
 }
